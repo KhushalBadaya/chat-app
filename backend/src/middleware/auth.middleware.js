@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import User from "../model/User";
-import { ENV } from "../lib/env";
+import User from "../model/User.js";
+import { ENV } from "../lib/env.js";
     export const protectedRoute = async(req,res,next)=>{
         try{
             const token = res.cokkies.jwt;
