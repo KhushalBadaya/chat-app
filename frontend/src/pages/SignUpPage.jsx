@@ -58,7 +58,7 @@ function SignUpPage() {
                   </div>
                   {/* email */}
                   <div>
-                    <label className="auth-input-label">Full Name</label>
+                    <label className="auth-input-label">Email</label>
                     <div className="relative">
                       <MailIcon className="auth-input-icon" />
                       <input
@@ -74,7 +74,7 @@ function SignUpPage() {
                   </div>
                   {/* password */}
                   <div>
-                    <label className="auth-input-label">Full Name</label>
+                    <label className="auth-input-label">Password</label>
                     <div className="relative">
                       <LockIcon className="auth-input-icon" />
                       <input
@@ -102,8 +102,8 @@ function SignUpPage() {
                   </button>
                 </form>
                 <div className="mt-6 text-center">
-                  <Link to="login" className="auth-link">
-                    Alernady have an account? Login
+                  <Link to="/login" className="auth-link">
+                    Al ready have an account? Login
                   </Link>
                 </div>
               </div>
