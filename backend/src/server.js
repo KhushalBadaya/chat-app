@@ -8,12 +8,14 @@ import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
-const app = express();
+import { app, server } from "./lib/socket.js";
+
+
 
 const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
-app.use(express.json()); //req.body
+app.use(express.json({limit:"15mb"})); //req.bodymb
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 
@@ -29,7 +31,7 @@ if (ENV.NODE_ENV == "production") {
 }
 
 connectDB().then(() => {
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log("Server running on port:", PORT);
   });
 });
