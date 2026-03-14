@@ -5,11 +5,11 @@ import Message from "../model/Message.js";
 export const getAllContacts = async(req,res)=>{
     try {
         const loggedInUserId=req.user._id;
-        const filteredUser = await User.find({id:{$ne:loggedInUserId}}).select(-password);
-        res.stauts(200).json(filteredUser);
+        const filteredUser = await User.find({id:{$ne:loggedInUserId}}).select("-password");
+        res.status(200).json(filteredUser);
     } catch (error){
         console.log("Error in getAllContacts : " , error );
-        res.stauts(500).json({message:"internal server error"});
+        res.status(500).json({message:"internal server error"});
     }
 }
 
