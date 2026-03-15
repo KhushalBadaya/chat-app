@@ -16,13 +16,16 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
 app.use(express.json({limit:"15mb"})); //req.bodymb
-app.use(cors({ 
-  origin: [
-    "https://chat-app-eight-sand-31.vercel.app",
-    "https://chat-mm5z488hf-khushalbadayas-projects.vercel.app",
-    /\.vercel\.app$/  // allows all vercel preview URLs
-  ], 
-  credentials: true 
+app.use(express.json({ limit: "15mb" }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || origin.endsWith(".vercel.app") || origin === "http://localhost:5173") {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
 app.use(cookieParser());
 
