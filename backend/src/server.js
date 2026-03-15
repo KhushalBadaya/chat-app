@@ -16,7 +16,14 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
 app.use(express.json({limit:"15mb"})); //req.bodymb
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+app.use(cors({ 
+  origin: [
+    "https://chat-app-eight-sand-31.vercel.app",
+    "https://chat-mm5z488hf-khushalbadayas-projects.vercel.app",
+    /\.vercel\.app$/  // allows all vercel preview URLs
+  ], 
+  credentials: true 
+}));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
