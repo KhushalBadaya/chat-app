@@ -76,8 +76,8 @@ export const login = async (req,res)=>{
 };
 
 export const logout = async (_,res)=>{
-  res.cookie("jwt","",{maxAge:0, sameSite: "none", secure: true })
-  res.status(200).json({message:"Logout Successfully"})
+    res.cookie("jwt","",{maxAge:0, sameSite: "none", secure: true })
+    res.status(200).json({message:"Logout Successfully"});
 };
   
 export const updateProfile=async(req,res)=>{
